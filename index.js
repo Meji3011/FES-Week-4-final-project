@@ -32,6 +32,15 @@ document.getElementById('currentSeasonBtn').addEventListener('click', () => {
     fetchAndDisplayAnime('https://api.jikan.moe/v4/seasons/now');
 });
 
+document.getElementById('searchInput').addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) {
+        fetchAndDisplayAnime(`https://api.jikan.moe/v4/anime?q=${query}`);
+      }
+    }
+  });
+
 document.getElementById('searchBtn').addEventListener('click', () => {
     const query = document.getElementById('searchInput').value.trim();
     if (query) {
